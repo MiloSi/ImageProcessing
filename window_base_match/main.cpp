@@ -6,6 +6,16 @@
 using namespace std;
 using namespace cv;
 
+/*
+	Created by Milo Si (called me C)
+
+	Window base match
+*/
+
+#define RIGHT_IMAGE "RIGHT IMAGE"
+#define LEFT_IMAGE  "LEFT IMAGE"
+#define DISPARITY_IMAGE "DISPARITY IMAGE" 
+
 int main(int argc, char** argv)
 {
 	String leftImageName= "scene1.row3.col2.ppm";
@@ -29,9 +39,7 @@ int main(int argc, char** argv)
 	double tempMin;
 	double min;
 
-	int moved_x;
-
-	int count = 0;
+	int distance;
 
 	for (int y = 0; y < rightImage.rows ; y++)
 	{
@@ -50,37 +58,46 @@ int main(int argc, char** argv)
 			width = width - fromX;
 			height = height - fromY;
 
-			Mat box(rightImage, Rect(fromX, fromY, width, height));
+			Mat rightWindow(rightImage, Rect(fromX, fromY, width, height));
 
 			min = 655360;
-			moved_x = x;
+			distance = x;
 			for (int swift = x; swift < x + 16; swift++)
 			{
 				if (swift + width > rightImage.cols - 1)
 					break;
-				Mat differ(leftImage, Rect(swift, fromY, width, height));
+				Mat leftWindow(leftImage, Rect(swift, fromY, width, height));
 				tempMin = 0;
 				for (int y1 = 0; y1 < height; y1++)
 				{
 					for (int x1 = 0; x1 < width; x1++)
 					{
-						tempMin += pow((double)differ.at<uchar>(y1, x1) - (double)box.at<uchar>(y1, x1), 2);
+						tempMin += pow((double)leftWindow.at<uchar>(y1, x1) - (double)rightWindow.at<uchar>(y1, x1), 2);
 					}
 				}
 				if (min > tempMin)
 				{
-					moved_x = swift;
+					distance = swift;
 					min = tempMin;
 				}
 			}
 
-			uchar result = saturate_cast<uchar>((moved_x - x) * 16);
-			dst.at<uchar>(y, x) = result;
+			dst.at<uchar>(y, x) = saturate_cast<uchar>((distance - x) * 16); // get subtract from distance to x and Normalization.
 
 		}
 	}
 
-	imshow("dst", dst);
+	namedWindow(RIGHT_IMAGE);
+	namedWindow(LEFT_IMAGE);
+	namedWindow(DISPARITY_IMAGE);
+
+	moveWindow(RIGHT_IMAGE, 0, 0);
+	moveWindow(LEFT_IMAGE, rightImage.cols, 0);
+	moveWindow(DISPARITY_IMAGE, rightImage.cols * 2, 0);
+
+	imshow(RIGHT_IMAGE, rightImage);
+	imshow(LEFT_IMAGE, leftImage);
+	imshow(DISPARITY_IMAGE, dst);
 
 	waitKey(0);
 }
