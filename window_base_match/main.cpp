@@ -20,6 +20,12 @@ int main(int argc, char** argv)
 {
 	String leftImageName= "scene1.row3.col2.ppm";
 	String rightImageName = "scene1.row3.col3.ppm";
+	
+	if(argc >= 2)
+	{
+		leftImageName = agrv[2];
+		rightImageName = argv[3];
+	}
 
 	Mat leftImage = imread(leftImageName, IMREAD_GRAYSCALE);
 	Mat rightImage = imread(rightImageName, IMREAD_GRAYSCALE);
@@ -31,6 +37,8 @@ int main(int argc, char** argv)
 		cerr << "CAN'T FIND FILE" << endl;
 		return 0;
 	}
+	
+	//these are used to make window
 	int fromX;
 	int fromY;
 	int width;
@@ -40,11 +48,15 @@ int main(int argc, char** argv)
 	double min;
 
 	int distance;
-
+	
+	
+	//Window Size is 5
 	for (int y = 0; y < rightImage.rows ; y++)
 	{
 		for (int x = 0; x < rightImage.cols; x++)
 		{
+			
+		
 			fromX = x - 2;
 			fromY = y - 2;
 			width = x + 3;
