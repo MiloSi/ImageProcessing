@@ -11,6 +11,11 @@ using namespace cv;
 #define ZERO_VALUE 65536
 
 
+/*
+	Created by Milo Si (Called me C)
+*/
+
+
 // 2 - Scan labeling
 int main(int argc, char** argv)
 {
