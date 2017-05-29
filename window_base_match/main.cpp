@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 	
 	if(argc >= 2)
 	{
-		leftImageName = agrv[2];
+		leftImageName = argv[2];
 		rightImageName = argv[3];
 	}
 
