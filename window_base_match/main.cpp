@@ -7,9 +7,8 @@ using namespace std;
 using namespace cv;
 
 /*
-	Created by Milo Si (called me C)
-
-	Window base match
+Created by Milo Si (called me C)
+Window base match
 */
 
 #define RIGHT_IMAGE "RIGHT IMAGE"
@@ -18,10 +17,10 @@ using namespace cv;
 
 int main(int argc, char** argv)
 {
-	String leftImageName= "scene1.row3.col2.ppm";
+	String leftImageName = "scene1.row3.col2.ppm";
 	String rightImageName = "scene1.row3.col3.ppm";
-	
-	if(argc >= 2)
+
+	if (argc >= 2)
 	{
 		leftImageName = argv[2];
 		rightImageName = argv[3];
@@ -37,7 +36,7 @@ int main(int argc, char** argv)
 		cerr << "CAN'T FIND FILE" << endl;
 		return 0;
 	}
-	
+
 	//these are used to make window
 	int fromX;
 	int fromY;
@@ -48,21 +47,21 @@ int main(int argc, char** argv)
 	double min;
 
 	int distance;
-	
-	
+
+
 	//Window Size is 5
-	for (int y = 0; y < rightImage.rows ; y++)
+	for (int y = 0; y < rightImage.rows; y++)
 	{
 		for (int x = 0; x < rightImage.cols; x++)
 		{
-			
-		
+
+
 			fromX = x - 2;
 			fromY = y - 2;
 			width = x + 3;
 			height = y + 3;
 
-			if (width > rightImage.cols - 1) width = rightImage.cols -1;
+			if (width > rightImage.cols - 1) width = rightImage.cols - 1;
 			if (height > rightImage.rows - 1) height = rightImage.rows - 1;
 
 			if (fromX < 0)	fromX = 0;
@@ -74,7 +73,7 @@ int main(int argc, char** argv)
 
 			min = 655360;
 			distance = x;
-			for (int swift = x; swift < x + 16; swift++)
+			for (int swift = fromX; swift < fromX + 16; swift++)
 			{
 				if (swift + width > rightImage.cols - 1)
 					break;
