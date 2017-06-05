@@ -7,6 +7,8 @@ using namespace cv;
 
 Mat kuwaharaFilter(const Mat& src);
 
+#define ORIGINAL_IMAGE "ORIGIANL IMAGE"
+#define KUWAHARA	   "KUWAHARA"
 
 
 Vec3d getAverage(Mat src)
@@ -24,6 +26,22 @@ Vec3d getAverage(Mat src)
 		}
 		average[i] = average[i] / 9;
 	}
+	return average;
+}
+double getAverage(Mat src, int a)
+{
+	double average = 0;
+
+	
+	for (int y = 0; y < 3; y++)
+	{
+		for (int x = 0; x < 3; x++)
+		{
+			average += (double) src.at<uchar>(y, x);
+		}
+	}
+	average = average / 9;
+	
 	return average;
 }
 
@@ -44,6 +62,24 @@ Vec3d getVariance(Mat src, Vec3d average)
 	}
 	return variance;
 }
+
+double getVariance(Mat src, double average)
+{
+	double variance = 0;
+
+
+	for (int y = 0; y < 3; y++)
+	{
+		for (int x = 0; x < 3; x++)
+		{
+			variance = pow(src.at<uchar>(y, x) - average, 2);
+
+		}
+	}
+	variance = variance / 9;
+
+	return variance;
+}
 Vec3b minVarianceLocation(Vec3d v[4]) {
 	Vec3b min;
 	int index = 0;
@@ -52,7 +88,7 @@ Vec3b minVarianceLocation(Vec3d v[4]) {
 	{
 		for (int j = 1; j < 4; j++)
 		{
-			if (v[index][i] < v[j][i]) {
+			if (v[index][i] > v[j][i]) {
 				index = j;
 			}
 		}
@@ -60,9 +96,21 @@ Vec3b minVarianceLocation(Vec3d v[4]) {
 	}
 
 	return min;
-
-
 }
+double minVarianceLocation(double v[4])
+{
+	int index = 0;
+
+	for (int j = 1; j < 4; j++)
+	{
+		if (v[index] > v[j]) {
+			index = j;
+		}
+	}
+	
+	return index;
+}
+
 
 
 Mat kuwaharaFilter(const Mat& src) {
@@ -70,9 +118,9 @@ Mat kuwaharaFilter(const Mat& src) {
 	Mat dst(src.rows, src.cols, src.type(), Scalar(0,0,0));
 
 
-	for (int y = 2; y < src.rows - 3; y++)
+	for (int y = 2; y < src.rows - 2; y++)
 	{
-		for (int x = 2; x < src.cols - 3; x++)
+		for (int x = 2; x < src.cols - 2; x++)
 		{
 			Mat region[4];
 			Vec3d average[4];
@@ -105,6 +153,44 @@ Mat kuwaharaFilter(const Mat& src) {
 }
 
 
+Mat kuwaharaFilter(const Mat& src, int grayscale) {
+
+	Mat dst(src.rows, src.cols, src.type(), Scalar(0));
+
+
+	for (int y = 2; y < src.rows - 2; y++)
+	{
+		for (int x = 2; x < src.cols - 2; x++)
+		{
+			Mat region[4];
+			double average[4];
+			double variance[4];
+
+
+			region[0] = Mat(src, Rect(x - 2, y - 2, 3, 3));
+			region[1] = Mat(src, Rect(x, y - 2, 3, 3));
+			region[2] = Mat(src, Rect(x - 2, y, 3, 3));
+			region[3] = Mat(src, Rect(x, y, 3, 3));
+
+
+			for (int i = 0; i < 4; i++)
+			{
+				average[i] = getAverage(region[i], 0);
+				variance[i] = getVariance(region[i], average[i]);
+
+			}
+
+			Vec3b minLocation = minVarianceLocation(variance);
+			for (int i = 0; i < 3; i++)
+			{
+				dst.at<uchar>(y, x) = saturate_cast<uchar>(average[minLocation[i]] + 0.5);
+
+			}
+
+		}
+	}
+	return dst;
+}
 
 
 
@@ -117,8 +203,14 @@ int main(int agrc, char ** argv)
 	Mat dst = kuwaharaFilter(image);
 
 
-	imshow("src", image);
-	imshow("dst", dst);
+	namedWindow(ORIGINAL_IMAGE);
+	namedWindow(KUWAHARA);
+
+	moveWindow(ORIGINAL_IMAGE, 0, 0);
+	moveWindow(KUWAHARA, image.cols, 0);
+
+	imshow(ORIGINAL_IMAGE, image);
+	imshow(KUWAHARA, dst);
 
 	waitKey(0);
 
