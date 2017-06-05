@@ -193,26 +193,3 @@ Mat kuwaharaFilter(const Mat& src, int grayscale) {
 }
 
 
-
-int main(int agrc, char ** argv)
-{
-	string imageName ="lena.jpg";
-	Mat image = imread(imageName, IMREAD_COLOR);
-	
-	
-	Mat dst = kuwaharaFilter(image);
-
-
-	namedWindow(ORIGINAL_IMAGE);
-	namedWindow(KUWAHARA);
-
-	moveWindow(ORIGINAL_IMAGE, 0, 0);
-	moveWindow(KUWAHARA, image.cols, 0);
-
-	imshow(ORIGINAL_IMAGE, image);
-	imshow(KUWAHARA, dst);
-
-	waitKey(0);
-
-	return 0;
-}
