@@ -70,13 +70,15 @@ Mat kuwaharaFilter(const Mat& src) {
 	Mat dst(src.rows, src.cols, src.type(), Scalar(0,0,0));
 
 
+	Mat region[4];
+	Vec3d average[4];
+	Vec3d variance[4];
+
 	for (int y = 2; y < src.rows - 2; y++)
 	{
 		for (int x = 2; x < src.cols - 2; x++)
 		{
-			Mat region[4];
-			Vec3d average[4];
-			Vec3d variance[4];
+			
 
 
 			region[0] = Mat(src, Rect(x - 2, y - 2, 3, 3));
@@ -163,13 +165,14 @@ Mat kuwaharaFilter(const Mat& src, int grayscale) {
 	Mat dst(src.rows, src.cols, src.type(), Scalar(0));
 
 
+	Mat region[4];
+	double average[4];
+	double variance[4];
+
 	for (int y = 2; y < src.rows - 2; y++)
 	{
 		for (int x = 2; x < src.cols - 2; x++)
 		{
-			Mat region[4];
-			double average[4];
-			double variance[4];
 
 
 			region[0] = Mat(src, Rect(x - 2, y - 2, 3, 3));
