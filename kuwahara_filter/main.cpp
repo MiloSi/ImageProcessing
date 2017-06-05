@@ -11,13 +11,12 @@
 int main(int argc, char ** argv)
 {
 	string imageName = "lena.jpg";
-
+	//string imageName = "board.jpg";
 	if (argc >= 2) imageName = argv[1];
 
 
 	
 #if 0
-
 	Mat image = imread(imageName, IMREAD_COLOR);
 	Mat dst = kuwaharaFilter(image);
 #else

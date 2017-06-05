@@ -28,23 +28,6 @@ Vec3d getAverage(Mat src)
 	}
 	return average;
 }
-double getAverage(Mat src, int a)
-{
-	double average = 0;
-
-	
-	for (int y = 0; y < 3; y++)
-	{
-		for (int x = 0; x < 3; x++)
-		{
-			average += (double) src.at<uchar>(y, x);
-		}
-	}
-	average = average / 9;
-	
-	return average;
-}
-
 Vec3d getVariance(Mat src, Vec3d average)
 {
 	
@@ -63,23 +46,6 @@ Vec3d getVariance(Mat src, Vec3d average)
 	return variance;
 }
 
-double getVariance(Mat src, double average)
-{
-	double variance = 0;
-
-
-	for (int y = 0; y < 3; y++)
-	{
-		for (int x = 0; x < 3; x++)
-		{
-			variance = pow(src.at<uchar>(y, x) - average, 2);
-
-		}
-	}
-	variance = variance / 9;
-
-	return variance;
-}
 Vec3b minVarianceLocation(Vec3d v[4]) {
 	Vec3b min;
 	int index = 0;
@@ -97,20 +63,6 @@ Vec3b minVarianceLocation(Vec3d v[4]) {
 
 	return min;
 }
-double minVarianceLocation(double v[4])
-{
-	int index = 0;
-
-	for (int j = 1; j < 4; j++)
-	{
-		if (v[index] > v[j]) {
-			index = j;
-		}
-	}
-	
-	return index;
-}
-
 
 
 Mat kuwaharaFilter(const Mat& src) {
@@ -153,6 +105,59 @@ Mat kuwaharaFilter(const Mat& src) {
 }
 
 
+
+
+double getAverage(Mat src, int a)
+{
+	double average = 0;
+
+
+	for (int y = 0; y < 3; y++)
+	{
+		for (int x = 0; x < 3; x++)
+		{
+			average += (double)src.at<uchar>(y, x);
+		}
+	}
+	average = average / 9;
+
+	return average;
+}
+
+
+double getVariance(Mat src, double average)
+{
+	double variance = 0;
+
+
+	for (int y = 0; y < 3; y++)
+	{
+		for (int x = 0; x < 3; x++)
+		{
+			variance = pow(src.at<uchar>(y, x) - average, 2);
+
+		}
+	}
+	variance = variance / 9;
+
+	return variance;
+}
+
+int minVarianceLocation(double v[4])
+{
+	int index = 0;
+
+	for (int j = 1; j < 4; j++)
+	{
+		if (v[index] > v[j]) {
+			index = j;
+		}
+	}
+
+	return index;
+}
+
+
 Mat kuwaharaFilter(const Mat& src, int grayscale) {
 
 	Mat dst(src.rows, src.cols, src.type(), Scalar(0));
@@ -180,10 +185,10 @@ Mat kuwaharaFilter(const Mat& src, int grayscale) {
 
 			}
 
-			Vec3b minLocation = minVarianceLocation(variance);
+			int minLocation = minVarianceLocation(variance);
 			for (int i = 0; i < 3; i++)
 			{
-				dst.at<uchar>(y, x) = saturate_cast<uchar>(average[minLocation[i]] + 0.5);
+				dst.at<uchar>(y, x) = saturate_cast<uchar>(average[minLocation] + 0.5);
 
 			}
 
