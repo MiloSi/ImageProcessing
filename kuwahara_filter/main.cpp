@@ -3,8 +3,10 @@
 
 /*
 	Created by Milo Si
-
 	Kuwahara Filtering
+	
+	I studied this filter in the wiki . 
+	https://en.wikipedia.org/wiki/Kuwahara_filter
 
 */
 
