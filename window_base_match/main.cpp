@@ -93,7 +93,7 @@ int main(int argc, char** argv)
 				}
 			}
 
-			dst.at<uchar>(y, x) = saturate_cast<uchar>((distance - x) * 16); // get subtract from distance to x and Normalization.
+			dst.at<uchar>(y, x) = saturate_cast<uchar>((distance - fromX) * 16); // get subtract from distance to x and Normalization.
 
 		}
 	}
