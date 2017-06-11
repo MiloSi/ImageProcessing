@@ -32,6 +32,11 @@ So the purpose of this project is to train image processing technique.
 
 <br>
 <br>
+
+<h2>Noise  </h2> <br>
+  | Original  | GAUSSIAN_NOISE | SALT AND PEPPER    |
+| :------------: | :-----------: | :-------------------: |
+| <img src="https://github.com/MiloSi/ImageProcessing/blob/master/noise/grayscale.jpg" width="200" height="200">   | <img src="https://github.com/MiloSi/ImageProcessing/blob/master/noise/gaussian_noise.jpg" width="200" height="200">|<img src="https://github.com/MiloSi/ImageProcessing/blob/master/noise/Impulse_nosie.jpg" width="200" height="200">|
 I Learned these alogrithm from Wiki.
 
 
