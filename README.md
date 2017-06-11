@@ -12,5 +12,6 @@ So the purpose of this project is to train image processing technique.
 
 Original Image lena
 <img src ="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/lena.jpg" width ="200"height ="200">
+<img src="https://github.com/CatsProject/CatsLibrary/blob/master/wiki_image/icon.png" width="150" height="150"> <br>
 
 
