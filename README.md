@@ -18,9 +18,7 @@ So the purpose of this project is to train image processing technique.
 
 <h2>Filtered Image</h2> <br>
 
-<h3>kuwahara </h3> <br>
-<img src="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/kuwahara.jpg" width="256" height="256"> <br>
+| Kuwahara  | Nagao Matsuyam |  Bilateral     |
+| :------------ | :-----------: | -------------------: |
+| <img src="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/kuwahara.jpg" width="256" height="256">   | <img src="https://github.com/MiloSi/OpenCV_Study/blob/master/nagao_matsuyama_filter/nagao_matsuyama.jpg" width="256" height="256">        |src="https://github.com/MiloSi/OpenCV_Study/blob/master/bilateral_filter/bilateral.jpg" width ="256" hegiht ="256>"  |
 
-
-<h3>nagao_matsuyam </h3> <br>
-<img src="https://github.com/MiloSi/OpenCV_Study/blob/master/nagao_matsuyama_filter/nagao_matsuyama.jpg" width="256" height="256"> <br>
