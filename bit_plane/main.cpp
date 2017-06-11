@@ -6,8 +6,6 @@ using namespace std;
 using namespace cv;
 
 /*
-	Created by Milo Si (Called me C)
-	
 	bit plane project
 */
 
@@ -15,6 +13,10 @@ int main(int argc, char** argv)
 {
 	String originalFileName = "lena.jpg";
 	String secretFileName = "bat.png";
+	String fileName = "bluemask";
+	String extension= ".jpg";
+
+	char fileNumber = 49;
 
 	Mat original = imread(originalFileName, IMREAD_GRAYSCALE);
 	Mat secret = imread(secretFileName, IMREAD_GRAYSCALE);
@@ -58,11 +60,16 @@ int main(int argc, char** argv)
 				show.at<uchar>(y, x) = (dst.at<uchar>(y, x) & (128 >> swift)) ?
 					255 : 0;
 			}
-		}
+		} 
 		
 		imshow("BIT PLANE", show);
 		waitKey(0);
 		swift++;
+
+	
+		string showFileName = fileName + (fileNumber++) + extension;
+
+		imwrite(showFileName, show);
 	}
 	return 0;
 
