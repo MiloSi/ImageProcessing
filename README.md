@@ -10,7 +10,7 @@ But, I thougth that using OpenCV functions without knowing the algorithm is not 
 So the purpose of this project is to train image processing technique.
 <br>
 
-Original Image 
-<image src ="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/lena.jpg" width ="200"height ="200">
+Original Image lena
+<img src ="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/lena.jpg" width ="200"height ="200">
 
 
