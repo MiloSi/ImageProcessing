@@ -19,15 +19,15 @@ So the purpose of this project is to train image processing technique.
 <h2>Filtered Image (some of my projects)</h2> <br>
 
 | Kuwahara  | Nagao Matsuyam |  Bilateral     |
-| :------------ | :-----------: | -------------------: |
+| :------------: | :-----------: | :-------------------: |
 | <img src="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/kuwahara.jpg" width="256" height="256">   | <img src="https://github.com/MiloSi/OpenCV_Study/blob/master/nagao_matsuyama_filter/nagao_matsuyama.jpg" width="256" height="256"> |<img src="https://github.com/MiloSi/OpenCV_Study/blob/master/bilateral_filter/bilateral.jpg" width ="256" hegiht ="256">  |
 
 <br>
 <br>
 <h2>Blue Mask (Bit Plane) </h2> <br>
 
-| 1 operated  | 4 operated | 7 operated     | 8 operated
-| :------------ | :-----------: | -------------------: | -------------------:
+| 1 operated  | 4 operated | 7 operated     | 8 operated |
+| :------------: | :-----------: | :-------------------: | :-------------------:
 | <img src="https://github.com/MiloSi/ImageProcessing/blob/master/bit_plane/bluemask1.jpg" width="200" height="200">   | <img src="https://github.com/MiloSi/ImageProcessing/blob/master/bit_plane/bluemask4.jpg" width="200" height="200">|<img src="https://github.com/MiloSi/ImageProcessing/blob/master/bit_plane/bluemask7.jpg" width="200" height="200">|<img src="https://github.com/MiloSi/ImageProcessing/blob/master/bit_plane/bluemask8.jpg" width="200" height="200">|
 
 <br>
