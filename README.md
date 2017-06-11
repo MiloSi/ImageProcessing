@@ -11,11 +11,13 @@ So the purpose of this project is to train image processing technique.
 <br>
 
 Original Image <br>
-#lena<br>
+
+###lena<br>
 <img src="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/lena.jpg" width="150" height="150"> <br>
 
-And Filtered Image
-#kuwahara
+And Filtered Image <br>
+
+###kuwahara<br>
 <img src="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/kuwahara.jpg" width="150" height="150"> <br>
 
 
