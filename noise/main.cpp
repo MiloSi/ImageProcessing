@@ -99,10 +99,15 @@ int main(int argc, char ** argv)
 		cerr << "CAN'T FIND FILE ";
 		return 0;
 	}
-		
+#if 0
 	Mat impulse_noise = saltAndPepperNoise(originalFile, ratio);
 	Mat gaussian_noise = gaussianNoise(originalFile, ratio);
 
+#else 0
+
+	Mat impulse_noise = saltAndPepperNoise(originalFile, 10.0);
+	Mat gaussian_noise = gaussianNoise(originalFile, 50.0);
+#endif
 	namedWindow(ORIGINAL_WIONDOW);
 	namedWindow(IMPULSE_NOSIE);
 	namedWindow(GAUSSIAN_NOISE);
@@ -115,8 +120,12 @@ int main(int argc, char ** argv)
 	imshow(IMPULSE_NOSIE, impulse_noise);
 	imshow(GAUSSIAN_NOISE, gaussian_noise);
 
+
+
 	waitKey(0);
 
+	imwrite("Impulse_nosie.jpg", impulse_noise);
+	imwrite("gaussian_noise.jpg", gaussian_noise);
 
 	return 0;
 }
