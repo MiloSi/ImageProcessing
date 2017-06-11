@@ -1,4 +1,4 @@
-Project name : OpenCV_Study <br>
+Project name : ImageProcessing <br>
 I learned opencv, and I wanted to upload what I learned.<br>
 So I made some projects. One project had one repository.<br>
 But I knew that I made too many repository. So I thought I should upload all opencv projects in one repository. <br>
