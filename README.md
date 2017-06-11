@@ -10,14 +10,15 @@ But, I thougth that using OpenCV functions without knowing the algorithm is not 
 So the purpose of this project is to train image processing technique.
 <br>
 
-Original Image <br>
+<h2>Original Image</h2> <br>
 
-###lena<br>
-<img src="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/lena.jpg" width="150" height="150"> <br>
+<h3>lena</h3> <br>
+<img src="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/lena.jpg" width="256" height="256"> <br>
 
-And Filtered Image <br>
 
-###kuwahara<br>
-<img src="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/kuwahara.jpg" width="150" height="150"> <br>
+<h2>Filtered Image</h2> <br>
+
+<h3>kuwahara </h3><br>
+<img src="https://github.com/MiloSi/OpenCV_Study/blob/master/kuwahara_filter/kuwahara.jpg" width="256" height="256"> <br>
 
 
