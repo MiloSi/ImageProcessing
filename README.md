@@ -25,4 +25,7 @@ So the purpose of this project is to train image processing technique.
 <br>
 <br>
 
+I Learned these alogrithm from Wiki.
+
+
 
