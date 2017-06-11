@@ -24,7 +24,14 @@ So the purpose of this project is to train image processing technique.
 
 <br>
 <br>
+<h2>Blue Mask (Bit Plane) </h2> <br>
 
+| 1 operated  | 4 operated | 7 operated     | 8 operated
+| :------------ | :-----------: | -------------------: | -------------------:
+| <img src="https://github.com/MiloSi/ImageProcessing/blob/master/bit_plane/bluemask1.jpg" width="200" height="200">   | <img src="https://github.com/MiloSi/ImageProcessing/blob/master/bit_plane/bluemask4.jpg" width="200" height="200">|<img src="https://github.com/MiloSi/ImageProcessing/blob/master/bit_plane/bluemask7.jpg" width="200" height="200">|<img src="https://github.com/MiloSi/ImageProcessing/blob/master/bit_plane/bluemask8.jpg" width="200" height="200">|
+
+<br>
+<br>
 I Learned these alogrithm from Wiki.
 
 
